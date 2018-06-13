@@ -10,6 +10,14 @@ var MessageSchema = new Schema({
     datePost : {
         type : Date,
         default : Date.now
+    },
+    channel : {
+        type : Schema.Types.ObjectId,
+        ref : 'Channel'
+    },
+    author : {
+        type : Schema.Types.ObjectId,
+        ref : 'User'
     }
 })
 
