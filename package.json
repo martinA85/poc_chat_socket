@@ -1,0 +1,29 @@
+{
+  "name": "poc_chat_socket",
+  "version": "1.0.0",
+  "description": "POC socket",
+  "main": "config.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.5",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.5",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinA85/poc_chat_socket.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martinA85/poc_chat_socket/issues"
+  },
+  "homepage": "https://github.com/martinA85/poc_chat_socket#readme"
+}

@@ -4,6 +4,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
+var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var config = require('./config');
 
@@ -17,7 +18,7 @@ mongoose.connect(config.database);
 app.set('superSecret', config.secret);
 
 // Initialisation de body-parse
-app.user(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function (request, response, next) {
     response.header("Access-Control-Allow-Origin", "*");
@@ -35,7 +36,7 @@ app.get('/', function (request, response) {
 
 // Import des routes
 var routes = require('./api/routes/routes');
-routes(app);
+// routes(app);
 
 // Démarrage du serveur
 app.listen(port);
