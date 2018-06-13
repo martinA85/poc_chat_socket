@@ -7,6 +7,7 @@ module.exports = function(app){
 
     app.route('/users').post(users.createUser).get(users.getAllUsers);
     app.route('/users/:userId').get(users.getUserById);
+    app.route('/findByName/:name').get(users.findByName);
 
     app.route('/channels').post(channels.createChannel).get(channels.getAllChannels);
     app.route('/channels/:channelId').get(channels.getChannelById);

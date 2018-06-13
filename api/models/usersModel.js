@@ -6,7 +6,8 @@ var Schema = mongoose.Schema;
 
 // Création du modèle
 var UsersSchema = new Schema({
-    name: String
+    name: String,
+    socketId : String
 });
 
 // Export du modèle

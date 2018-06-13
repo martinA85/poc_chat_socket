@@ -30,6 +30,17 @@ exports.getAllUsers = function (req, res) {
     });
 };
 
+// Retourne tous les utilisateurs
+exports.findByName = function (req, res) {
+    Users.findOne({name:req.params.name}, function (err, users) {
+        if (err) {
+            res.send(err);
+        }
+        console.log(users);
+        res.json(users);
+    });
+};
+
 exports.getUserById = function (req, res) {
     Users.findById(req.params.userId, function (err, user) {
         if (err) {
@@ -38,3 +49,4 @@ exports.getUserById = function (req, res) {
         res.json(user);
     });
 };
+

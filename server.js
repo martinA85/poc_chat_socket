@@ -8,13 +8,18 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var config = require('./config');
 
-// Import des modèls
+// Import des models
 var Users = require('./api/models/usersModel');
 var Channels = require('./api/models/channelsModel');
 var Messages = require('./api/models/messageModel');
 
 // Export des variables
 module.exports.app = app;
+module.exports = io;
+
+//import socket
+var userSocket = require('./api/sockets/userSocket');
+
 
 // Configuration
 var port = process.env.PORT || 3000;
@@ -44,5 +49,6 @@ var routes = require('./api/routes/routes');
 routes(app);
 
 // Démarrage du serveur
-app.listen(port);
+server.listen(port);
 console.log('server started on port : ' + port);
+
