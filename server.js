@@ -11,6 +11,7 @@ var config = require('./config');
 // Import des modèls
 var Users = require('./api/models/usersModel');
 var Channels = require('./api/models/channelsModel');
+var Messages = require('./api/models/messageModel');
 
 // Export des variables
 module.exports.app = app;

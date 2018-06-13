@@ -4,7 +4,7 @@ var Message = mongoose.model("Message");
 
 //create a message
 exports.postMessage = function(req, res){
-    new_message = new Message(request.body);
+    let new_message = new Message(req.body);
     new_message.save(function(err, new_message){
         if(err){
             res.send(err);
