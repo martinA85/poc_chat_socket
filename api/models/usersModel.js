@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // Création du modèle
-var UsersSchema = Schema({
+var UsersSchema = new Schema({
     name: String
 });
 

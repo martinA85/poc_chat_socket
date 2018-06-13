@@ -8,6 +8,10 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var config = require('./config');
 
+// Import des modèls
+var Users = require('./api/models/usersModel');
+var Channels = require('./api/models/channelsModel');
+
 // Export des variables
 module.exports.app = app;
 
@@ -36,7 +40,7 @@ app.get('/', function (request, response) {
 
 // Import des routes
 var routes = require('./api/routes/routes');
-// routes(app);
+routes(app);
 
 // Démarrage du serveur
 app.listen(port);
