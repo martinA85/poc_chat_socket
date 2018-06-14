@@ -7,18 +7,30 @@ function init() {
     var userId = false;
 
     $(document).ready(function () {
-        $("#btn_connexion").click(function (e) {
-            // e.preventDefault();
+        $("#form_connexion").submit(function (e) {
+            e.preventDefault();
             $.ajax({
-                type: 'GET',
-                url: 'http://localhost:3000/findByName/' + $('#name').val(),
+                url: 'http://localhost:3000/auth',
+                type: 'POST',
+                data: $('#form_connexion').serialize(),
+                dataType: 'json',
                 success: function (data) {
                     userId = data._id;
 
                     console.log(userId);
 
-                    var socket = io.connect("http://localhost:3000/", { query: "userId=" + userId });
-                    socket.on("cnx_etat", function (res) {
+                    var connectionOptions = {
+                        "force new connection": true,
+                        "reconnectionAttempts": "Infinity", //avoid having user reconnect manually in order to prevent dead clients after a server restart
+                        "timeout": 10000,                  //before connect_error and connect_timeout are emitted.
+                        "transports": ["websocket"],
+                        "query": "userId=" + userId
+                    };
+
+                    var socket = io.connect("http://localhost:8080", connectionOptions);
+                    // socket.connect("http://localhost:3000/", { query: "userId=" + userId });
+                    console.log(socket);
+                    socket.on("cnx_state", function (res) {
                         console.log(res);
                         if (res.success) {
                             console.log(res);
